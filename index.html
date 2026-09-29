@@ -42,12 +42,13 @@
 
   <main id="main">
     <div class="row">
-      <section class="panel p-picks"><i class="c1"></i><i class="c2"></i>
+      <section class="panel p-picks" id="picks"><i class="c1"></i><i class="c2"></i>
         <div class="ph">
           <h2 id="picks-title">Things worth a look</h2>
           <span class="sub" id="ledger" hidden></span>
         </div>
-        <div class="picks" id="picks" hidden></div>
+        <div class="sub" id="picks-count" hidden></div>
+        <div class="picks" id="picks-grid" hidden></div>
         <div class="empty" id="picks-empty"></div>
       </section>
     </div>
@@ -94,6 +95,12 @@
       <span>General information, not financial advice</span>
     </footer>
   </main>
+</div>
+<div id="pick-sheet" class="sheet" hidden role="dialog" aria-modal="true" aria-label="Stock details">
+  <div class="sheet-card">
+    <button class="sheet-x" id="pick-close" type="button" aria-label="Close">✕</button>
+    <div id="pick-body"></div>
+  </div>
 </div>
 <script src="push-config.js"></script>
 <script src="app.js"></script>

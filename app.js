@@ -49,35 +49,85 @@ function renderHeader(d) {
 }
 
 const VERDICT = { worth_a_look: ["WORTH A LOOK", "good"], watch: ["WATCH", "watch"], avoid: ["AVOID – cheap for a reason", "bad"] };
+const RESULT = { pass: ["✓", "up"], fail: ["✗", "down"], unclear: ["?", "flat"] };
 
 function renderPicks(d) {
-  const p = d.picks || { status: "not_built", items: [] };
+  const p = d.picks || { status: "unavailable", items: [] };
   const empty = $("picks-empty");
   if (p.status !== "ok") {
-    $("picks-title").textContent = "Things worth a look";
-    empty.textContent = "Coming soon — this needs the stock scorecard, which isn't built yet. Until then, your core index plan is the default.";
+    empty.textContent = "Couldn't check the watched stocks today. Your core index plan is the default.";
     return;
   }
-  $("picks-title").textContent = `${p.items.length || ""} thing${p.items.length === 1 ? "" : "s"} worth a look`.trim();
-  if (!p.items.length) { empty.textContent = "Nothing stands out today — your core index plan is the default."; return; }
-  empty.hidden = true;
-  const box = $("picks");
-  box.hidden = false;
-  for (const it of p.items) {
-    const [label, cls] = VERDICT[it.verdict] || [it.verdict, "neutral"];
-    box.append(el("a", { class: "pick", href: safeUrl(it.url) || "#" },
-      el("div", { class: "ph" }, el("span", { class: "tk", text: it.ticker }),
-        el("strong", { class: it.pct >= 0 ? "up" : "down", text: pct(it.pct) })),
-      el("div", { class: "sub", text: `${it.name} · ${it.theme}` }),
-      el("span", { class: `chip ${cls}`, style: "align-self:flex-start", text: label }),
-      el("div", { style: "font-size:12px;line-height:1.4", text: it.reason })));
+  const n = p.items.length;
+  const count = (v) => p.items.filter((i) => i.verdict === v).length;
+  const worth = count("worth_a_look");
+  $("picks-title").textContent = worth ? `${worth} thing${worth === 1 ? "" : "s"} worth a look` : "Nothing worth a look today";
+  if (n) {
+    const parts = [[worth, "worth a look"], [count("watch"), "to watch"], [count("avoid"), "to avoid"]]
+      .filter(([k]) => k).map(([k, t]) => `${k} ${t}`);
+    $("picks-count").hidden = false;
+    $("picks-count").textContent = `${parts.join(" · ")} · checked ${p.checked} stocks`;
   }
-  const l = d.ledger;
-  if (l && l.status === "ok") {
-    const s = $("ledger");
+  if (!n) {
+    empty.textContent = `Checked ${p.checked} stocks — none has dipped enough to look at. Your core index plan is the default.`;
+  } else {
+    empty.hidden = true;
+    const box = $("picks-grid");
+    box.hidden = false;
+    p.items.forEach((it) => {
+      const [label, cls] = VERDICT[it.verdict] || [it.verdict, "neutral"];
+      const card = el("button", { class: "pick", type: "button" },
+        el("div", { class: "ph" }, el("span", { class: "tk", text: it.ticker }),
+          el("strong", { class: it.pct >= 0 ? "up" : "down", text: pct(it.pct) })),
+        el("div", { class: "sub", text: `${it.name} · ${it.theme} · ${it.pct_label}` }),
+        el("span", { class: `chip ${cls}`, style: "align-self:flex-start", text: label }),
+        el("div", { style: "font-size:12px;line-height:1.4", text: it.reason }));
+      card.onclick = () => openPick(it);
+      box.append(card);
+    });
+  }
+  const l = d.ledger || {}, s = $("ledger");
+  const sign = (v) => `${v >= 0 ? "+" : ""}${v}%`;
+  if (l.status === "ok") {
     s.hidden = false;
-    s.replaceChildren("Picks vs global index: ", el("strong", { text: `${l.picks_pct >= 0 ? "+" : ""}${l.picks_pct}% vs ${l.index_pct >= 0 ? "+" : ""}${l.index_pct}%` }));
+    s.replaceChildren("Picks vs global index: ", el("strong", { text: `${sign(l.picks_pct)} vs ${sign(l.index_pct)}` }),
+      ` (${l.beat} of ${l.count} ahead)`);
+  } else if (l.status === "started") {
+    s.hidden = false;
+    s.textContent = `Scoring ${l.count} pick${l.count === 1 ? "" : "s"} vs the index from tomorrow`;
   }
+}
+
+function openPick(it) {
+  const [label, cls] = VERDICT[it.verdict] || [it.verdict, "neutral"];
+  const body = $("pick-body");
+  body.replaceChildren(
+    el("h2", { text: it.name === it.ticker ? it.ticker : `${it.ticker} · ${it.name}` }),
+    el("span", { class: `chip ${cls}`, style: "margin-top:6px", text: label }),
+    el("div", { class: "sub", style: "margin-top:4px",
+      text: `${it.theme} · ${pct(it.pct)} ${it.pct_label} · ${Math.abs(it.from_high52).toFixed(0)}% below its 1-year high` }),
+    el("p", { class: "narr", text: it.reason }),
+    ...it.checks.map((c) => {
+      const [mark, mcls] = RESULT[c.result] || RESULT.unclear;
+      return el("div", { class: "wrow" }, el("span", { class: `d ${mcls}`, text: mark }),
+        el("div", { class: "x" }, el("strong", { text: c.name }), el("br"), el("span", { text: c.text })));
+    }),
+    el("div", { class: "sub", style: "margin:12px 0 4px", text: "Headlines" }),
+    ...(it.headlines.length ? it.headlines.map((h) => {
+      const url = safeUrl(h.url);
+      return el(url ? "a" : "div", url ? { class: "nrow", href: url, target: "_blank", rel: "noopener noreferrer" } : { class: "nrow" },
+        el("span", { class: "t", text: h.title }), el("span", { class: "s", text: [h.source, h.published].filter(Boolean).join(" · ") }));
+    }) : [el("div", { class: "sub", text: "No recent headlines found." })]),
+    el("p", { class: "sub", style: "margin-top:12px",
+      text: "Or: the same money in the global index fund (VWRP) already includes most of these companies. These rules are new and unproven — the ledger tracks whether they beat the index." }));
+  $("pick-sheet").hidden = false;
+  document.body.classList.add("locked");
+  $("pick-sheet").scrollTop = 0;
+}
+
+function closePick() {
+  $("pick-sheet").hidden = true;
+  document.body.classList.remove("locked");
 }
 
 function renderBrief(d) {
@@ -191,6 +241,10 @@ async function setupNotifications(reg) {
     }
   };
 }
+
+$("pick-close").onclick = closePick;
+$("pick-sheet").addEventListener("click", (e) => { if (e.target.id === "pick-sheet") closePick(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePick(); });
 
 load();
 if ("serviceWorker" in navigator) {
