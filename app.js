@@ -194,7 +194,9 @@ function goToSavings() {
 
 function investForm(it) {
   const savings = savedSavings();
-  const box = el("div", { class: "invest" }, el("h2", { text: `Should I invest in ${it.ticker}?` }));
+  // The whole section is one button: tap "Should I invest in AMD?" and the answer opens underneath.
+  const box = el("details", { class: "invest" },
+    el("summary", { class: "btn invest-btn", text: `Should I invest in ${it.ticker}?` }));
   const r = sizePick(savings, it.verdict);
   if (!r.ok) {
     box.append(el("p", { class: "sub", text: r.error }),
