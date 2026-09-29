@@ -121,9 +121,43 @@ function openPick(it) {
     el("p", { class: "sub", style: "margin-top:12px",
       text: "Or: the same money in the global index fund (VWRP) already includes most of these companies. These rules are new and unproven — the ledger tracks whether they beat the index." }),
     investForm(it));
+  showSheet();
+}
+
+function showSheet() {
   $("pick-sheet").hidden = false;
   document.body.classList.add("locked");
   $("pick-sheet").scrollTop = 0;
+}
+
+const NEWS_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h13v14a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v10a2 2 0 0 1-2 2"/><path d="M7 9h7M7 13h7M7 17h4"/></svg>';
+
+function openNews(n) {
+  const [dot, cls] = DIR[n.direction] || DIR.flat;
+  const mood = { up: ["GOOD FOR MARKETS", "good"], down: ["BAD FOR MARKETS", "bad"], flat: ["NEUTRAL", "neutral"] }[n.direction] || ["NEUTRAL", "neutral"];
+  const when = n.published ? new Date(n.published).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+  const s = n.summary;
+  const url = safeUrl(n.url);
+  const body = $("pick-body");
+  body.replaceChildren(
+    el("h2", { text: n.title }),
+    el("div", { style: "display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px" },
+      el("span", { class: `chip ${mood[1]}`, text: `${dot} ${mood[0]}` }),
+      el("span", { class: "sub", text: [n.asset, n.source, when].filter(Boolean).join(" · ") })),
+    el("div", { class: "sub", style: "margin-top:14px", text: "What happened" }),
+    el("p", { class: "narr", style: "font-size:14px", text: (s && s.what) || n.description || "No summary for this one — open the article below." }),
+    ...(s && s.why ? [el("div", { class: "sub", style: "margin-top:10px", text: "Why it matters" }),
+                      el("p", { class: "narr", style: "font-size:14px", text: s.why })] : []),
+    el("p", { class: "sub", style: "margin-top:12px",
+      text: s ? "Summary written by AI from the headline and the article's intro only — check the article before acting on it."
+              : "This is the article's own intro." }));
+  if (url) {
+    const a = el("a", { class: "btn newslink", href: url, target: "_blank", rel: "noopener noreferrer" });
+    a.innerHTML = NEWS_ICON;
+    a.append(el("span", { text: `Read the full article${n.source ? ` on ${n.source}` : ""}` }));
+    body.append(a);
+  }
+  showSheet();
 }
 
 // ---------- "Should I invest, and how much?" — worked out on this phone; nothing is sent anywhere ----------
@@ -203,11 +237,11 @@ function renderBrief(d) {
   const box = $("news");
   for (const n of d.news || []) {
     const [dot, cls] = DIR[n.direction] || DIR.flat;
-    const url = safeUrl(n.url);
-    const row = el(url ? "a" : "div", url ? { class: "nrow", href: url, target: "_blank", rel: "noopener noreferrer" } : { class: "nrow" },
+    const row = el("button", { class: "nrow", type: "button" },
       el("span", { class: `dot ${cls}`, text: dot }),
       el("span", { class: "t", text: n.title }),
       el("span", { class: "s", text: [n.asset, n.source].filter(Boolean).join(" · ") }));
+    row.onclick = () => openNews(n);
     box.append(row);
   }
 }
@@ -218,7 +252,7 @@ function renderWatch(d) {
   if (!items.length) { box.append(el("div", { class: "sub", text: "Nothing scheduled." })); return; }
   for (const w of items) {
     const x = el("div", { class: "x" }, el("strong", { text: w.name }));
-    if (w.expect) x.append(el("br"), el("span", { text: `Expect ${w.expect}` }));
+    if (w.expect) x.append(el("br"), el("span", { text: `Expect ${w.expect.charAt(0).toLowerCase()}${w.expect.slice(1)}` }));
     if (w.why) x.append(el("br"), el("span", { text: w.why }));
     box.append(el("div", { class: "wrow" }, el("span", { class: "d", text: w.date || "—" }), x));
   }
@@ -269,7 +303,7 @@ function b64ToBytes(s) {
 function showSubscription(sub) {
   $("notify-out").hidden = false;
   $("notify-json").value = JSON.stringify(sub);
-  $("notify-state").textContent = "on for this phone";
+  $("notify-state").textContent = "on ✓";
 }
 
 async function setupNotifications(reg) {
@@ -294,6 +328,7 @@ async function setupNotifications(reg) {
     return;
   }
   help.textContent = "Get one notification each weekday when the briefing is ready (and if it fails).";
+  $("notify-state").textContent = "off — tap to turn on";
   btn.hidden = false;
   btn.onclick = async () => {
     try {

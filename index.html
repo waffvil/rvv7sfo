@@ -79,15 +79,17 @@
     </div>
 
     <section class="panel" id="notify" hidden><i class="c1"></i><i class="c2"></i>
-      <div class="ph"><h2>Notifications</h2><span class="sub" id="notify-state"></span></div>
-      <div class="sub" id="notify-help" style="margin-top:6px"></div>
-      <button class="btn" id="notify-btn" type="button" hidden>Turn on notifications</button>
-      <div id="notify-out" hidden>
-        <div class="sub" style="margin:8px 0 6px">Last step: copy this and send it to Claude (or save it as the
-          <strong>PUSH_SUBSCRIPTION</strong> secret in the repo's GitHub settings).</div>
-        <textarea id="notify-json" readonly rows="4"></textarea>
-        <button class="btn" id="notify-copy" type="button">Copy</button>
-      </div>
+      <details id="notify-details">
+        <summary class="ph"><h2>Notifications</h2><span class="sub" id="notify-state"></span></summary>
+        <div class="sub" id="notify-help" style="margin-top:6px"></div>
+        <button class="btn" id="notify-btn" type="button" hidden>Turn on notifications</button>
+        <div id="notify-out" hidden>
+          <div class="sub" style="margin:8px 0 6px">Only needed if notifications stop: copy this and send it to Claude
+            (or save it as the <strong>PUSH_SUBSCRIPTION</strong> secret in the repo's GitHub settings).</div>
+          <textarea id="notify-json" readonly rows="4"></textarea>
+          <button class="btn" id="notify-copy" type="button">Copy</button>
+        </div>
+      </details>
     </section>
 
     <footer class="foot">

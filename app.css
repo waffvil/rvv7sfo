@@ -64,7 +64,7 @@ h2 { margin: 0; font-family: var(--font-heading); font-weight: 600; font-size: 1
 /* brief */
 .narr { margin-top: 6px; font-size: 13px; line-height: 1.5; }
 .news { margin-top: 6px; }
-.nrow { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--color-neutral-300); color: var(--color-text); }
+.nrow { width: 100%; font: inherit; text-align: left; background: none; border: 0; cursor: pointer; display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--color-neutral-300); color: var(--color-text); }
 .nrow:hover { color: var(--color-accent-800); text-decoration: none; }
 .nrow .dot { width: 12px; flex: none; }
 .nrow .t { flex: 1; min-width: 0; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -129,3 +129,11 @@ body.locked { overflow: hidden; }
 .lock input { width: 100%; font: 16px var(--font-body); padding: 10px; border: 1px solid var(--color-neutral-400);
               background: var(--color-surface); color: var(--color-text); }
 .btn:disabled { opacity: .6; }
+
+/* news summary link + collapsible notifications */
+.newslink { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; text-decoration: none; }
+.newslink:hover { text-decoration: none; color: var(--color-on-accent); }
+#notify-details > summary { list-style: none; cursor: pointer; align-items: center; }
+#notify-details > summary::-webkit-details-marker { display: none; }
+#notify-details > summary h2::after { content: " ▸"; font-size: 13px; color: var(--color-neutral-700); }
+#notify-details[open] > summary h2::after { content: " ▾"; }
