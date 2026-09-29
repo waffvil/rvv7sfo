@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Briefing">
+<title>Market Briefing</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">Market Briefing</div>
+    <nav class="nav" aria-label="Sections">
+      <a class="on" href="./" aria-current="page">Today</a>
+      <span class="soon" aria-disabled="true">Invest</span>
+      <span class="soon" aria-disabled="true">Dips</span>
+      <span class="soon" aria-disabled="true">Watchlist</span>
+      <span class="soon" aria-disabled="true">Ledger</span>
+      <span class="soon" aria-disabled="true">Sentiment</span>
+    </nav>
+    <div class="meta">
+      <span class="date" id="date"></span>
+      <span class="mode" id="mode" hidden></span>
+    </div>
+  </header>
+
+  <div class="banner alert" id="alert" hidden></div>
+  <div class="banner stale" id="stale" hidden></div>
+
+  <main id="main">
+    <div class="row">
+      <section class="panel p-picks"><i class="c1"></i><i class="c2"></i>
+        <div class="ph">
+          <h2 id="picks-title">Things worth a look</h2>
+          <span class="sub" id="ledger" hidden></span>
+        </div>
+        <div class="picks" id="picks" hidden></div>
+        <div class="empty" id="picks-empty"></div>
+      </section>
+    </div>
+
+    <div class="row">
+      <section class="panel p-brief"><i class="c1"></i><i class="c2"></i>
+        <div class="ph">
+          <h2>Today's brief</h2>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span class="sub" id="sent-counts"></span>
+            <span class="chip" id="sent-chip" hidden></span>
+          </div>
+        </div>
+        <div class="narr" id="narrative"></div>
+        <div class="news" id="news"></div>
+      </section>
+
+      <div class="col c-side">
+        <section class="panel"><i class="c1"></i><i class="c2"></i>
+          <h2>What to watch</h2>
+          <div id="watch" style="margin-top:4px"></div>
+        </section>
+        <section class="panel"><i class="c1"></i><i class="c2"></i>
+          <div class="ph"><h2>Hype meter</h2><span class="sub">caution flag</span></div>
+          <div id="hype" style="margin-top:6px;display:grid;gap:4px"></div>
+        </section>
+      </div>
+    </div>
+
+    <section class="panel" id="notify" hidden><i class="c1"></i><i class="c2"></i>
+      <div class="ph"><h2>Notifications</h2><span class="sub" id="notify-state"></span></div>
+      <div class="sub" id="notify-help" style="margin-top:6px"></div>
+      <button class="btn" id="notify-btn" type="button" hidden>Turn on notifications</button>
+      <div id="notify-out" hidden>
+        <div class="sub" style="margin:8px 0 6px">Last step: copy this and send it to Claude (or save it as the
+          <strong>PUSH_SUBSCRIPTION</strong> secret in the repo's GitHub settings).</div>
+        <textarea id="notify-json" readonly rows="4"></textarea>
+        <button class="btn" id="notify-copy" type="button">Copy</button>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span id="sources"></span>
+      <span>General information, not financial advice</span>
+    </footer>
+  </main>
+</div>
+<script src="push-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

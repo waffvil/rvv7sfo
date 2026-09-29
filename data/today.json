@@ -1,0 +1,167 @@
+{
+ "schema": 1,
+ "generated_at": "2026-09-29T11:01:42+00:00",
+ "trading_day": "2026-09-28",
+ "data_date": "2026-09-28",
+ "stale": false,
+ "mode": "quiet",
+ "alerts": [],
+ "narrative": "Today’s market retreat was anchored by a wave of risk aversion after confidential details of Anthropic’s upcoming IPO suggested tighter AI regulation and potential earnings headwinds, pushing the VIX to its highest level in months. The resulting dollar rally and yield surge forced a broad sell‑off in risk assets, leaving safe‑haven metals sharply lower as investors re‑priced macro‑inflation expectations.",
+ "sentiment": {
+  "avg": -0.172,
+  "bullish": 6,
+  "bearish": 19,
+  "neutral": 15
+ },
+ "news": [
+  {
+   "title": "Boston-bound Delta flight makes emergency landing in Portugal after smoke fills cabin - New York Post",
+   "url": "https://nypost.com/2026/09/28/world-news/boston-bound-delta-flight-makes-emergency-landing-in-portugal-after-smoke-fills-cabin/",
+   "source": "New York Post",
+   "asset": "",
+   "score": -0.7,
+   "direction": "down"
+  },
+  {
+   "title": "Exclusive | Californians flee for off-grid safe houses in Montana and Idaho with doomsday bunkers - New York Post",
+   "url": "https://nypost.com/2026/09/27/us-news/californians-flee-for-off-grid-safe-houses-in-montana-and-idaho-with-doomsday-bunkers/",
+   "source": "New York Post",
+   "asset": "",
+   "score": -0.7,
+   "direction": "down"
+  },
+  {
+   "title": "Parents confront a new fear: Could AI end humanity before their kids grow up? - CNN",
+   "url": "https://www.cnn.com/2026/09/28/us/ai-human-extinction-parents-kids-safety",
+   "source": "CNN",
+   "asset": "Tech",
+   "score": -0.6,
+   "direction": "down"
+  },
+  {
+   "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
+   "url": "https://www.nbcnews.com/tech/tech-news/openai-pauses-training-latest-models-agents-searched-us-government-sit-rcna600098",
+   "source": "NBC News",
+   "asset": "Tech",
+   "score": -0.6,
+   "direction": "down"
+  },
+  {
+   "title": "Thinking about buying stocks instead of a home? The S&P 500 has blown away the housing market - Fortune",
+   "url": "https://fortune.com/2026/09/27/stocks-vs-homeownership-renting-housing-market-mortgage-rates-sp500/",
+   "source": "Fortune",
+   "asset": "S&P 500",
+   "score": 0.6,
+   "direction": "up"
+  },
+  {
+   "title": "The Moves That Backfired on Trump and Drove Interest Rates and Inflation Higher - WSJ",
+   "url": "https://www.wsj.com/economy/trump-economy-inflation-jobs-724e4da8",
+   "source": "The Wall Street Journal",
+   "asset": "",
+   "score": -0.6,
+   "direction": "down"
+  },
+  {
+   "title": "Only US private passenger train files Chapter 11 bankruptcy - thestreet.com",
+   "url": "https://www.thestreet.com/travel/brightline-passenger-train-company-files-chapter-11-bankruptcy",
+   "source": "TheStreet",
+   "asset": "",
+   "score": -0.6,
+   "direction": "down"
+  },
+  {
+   "title": "Sensex, Nifty end sharply lower; PSU Bank shares bear brunt",
+   "url": "https://www.business-standard.com/markets/capital-market-news/sensex-nifty-end-sharply-lower-psu-bank-shares-bear-brunt-126092800755_1.html",
+   "source": "Business Standard",
+   "asset": "",
+   "score": -0.6,
+   "direction": "down"
+  }
+ ],
+ "watch": [
+  {
+   "date": "28 Sep",
+   "iso_date": "2026-09-28",
+   "name": "Federal Reserve Policy Meeting",
+   "why": "The Fed’s rate decision will confirm whether policy is tightening further amid rising yields.",
+   "expect": "Markets will react sharply to any hint of a larger rate hike or altered forward guidance."
+  },
+  {
+   "date": "5 Oct",
+   "iso_date": "2026-10-05",
+   "name": "U.S. Non‑Farm Payrolls",
+   "why": "Employment data will test the Fed’s narrative that labor markets can sustain higher rates.",
+   "expect": "A stronger report could fuel further yield gains; a weaker one may pause the rate‑rise cycle."
+  },
+  {
+   "date": "12 Oct",
+   "iso_date": "2026-10-12",
+   "name": "Anthropic IPO Pricing",
+   "why": "The pricing will set the benchmark for AI‑related equity valuations and regulatory sentiment.",
+   "expect": "A lower‑than‑expected price could deepen the tech sell‑off, while a premium could revive risk appetite."
+  },
+  {
+   "date": "19 Oct",
+   "iso_date": "2026-10-19",
+   "name": "UK CPI Release",
+   "why": "Inflation trends in the UK will influence GBP/USD and European central‑bank policy outlooks.",
+   "expect": "A drop below 2% could boost the pound and lift European equities."
+  },
+  {
+   "date": "2 Nov",
+   "iso_date": "2026-11-02",
+   "name": "OPEC+ Production Decision",
+   "why": "Adjustments to output will directly affect oil prices, which remain a key driver of energy stocks and inflation expectations.",
+   "expect": "A supply cut could revive energy sector gains; a hike may pressure inflation‑sensitive assets."
+  }
+ ],
+ "movers": [
+  {
+   "name": "VIX",
+   "category": "Volatility",
+   "pct": 8.07,
+   "why": "VIX +8.07% – Spike reflects heightened fear after leaked Anthropic IPO details raised concerns over AI‑related regulatory risk and potential slowdown in tech spending."
+  },
+  {
+   "name": "Silver",
+   "category": "Commodity",
+   "pct": -4.71,
+   "why": "Silver -4.71% – Sharp drop tied to a broader sell‑off in precious metals as the dollar strengthened on a 5%‑plus 10‑year Treasury yield."
+  },
+  {
+   "name": "Gold",
+   "category": "Commodity",
+   "pct": -3.54,
+   "why": "Gold -3.54% – Losses stem from the same yield‑driven dollar rally and the market’s shift away from safe‑haven assets amid AI‑risk angst."
+  },
+  {
+   "name": "Communication",
+   "category": "Sector ETF",
+   "pct": -1.58,
+   "why": "Communication -1.58% – Telecom stocks fell as investors trimmed exposure to discretionary tech after the Anthropic leak, fearing lower near‑term earnings."
+  },
+  {
+   "name": "Consumer Discr.",
+   "category": "Sector ETF",
+   "pct": -1.41,
+   "why": "Consumer Discr. -1.41% – Retail and media names slipped on the same risk‑off tone, with consumers likely to delay big‑ticket AI‑driven purchases."
+  }
+ ],
+ "picks": {
+  "status": "not_built",
+  "items": []
+ },
+ "hype": {
+  "status": "not_built",
+  "items": []
+ },
+ "ledger": {
+  "status": "not_built"
+ },
+ "sources": [
+  "Yahoo Finance",
+  "NewsAPI"
+ ],
+ "model": "gpt-oss-120b"
+}

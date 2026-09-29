@@ -1,0 +1,44 @@
+/* Design tokens. Stand-ins for the Claude Design "industry" system (its _ds/styles.css wasn't exported) —
+   replace this file with the real one and everything else follows. Same variable names as the design. */
+:root {
+  --font-heading: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-bg: #f6f6f4;
+  --color-surface: #ffffff;
+  --color-text: #1b1b1d;
+  --color-neutral-200: #ebebe8;
+  --color-neutral-300: #dcdcd8;
+  --color-neutral-400: #c2c2bd;
+  --color-neutral-600: #8a8a86;
+  --color-neutral-700: #636367;
+  --color-neutral-800: #454549;
+  --color-accent: #2f6fa3;
+  --color-accent-100: #e7eff7;
+  --color-accent-700: #245a86;
+  --color-accent-800: #1c4769;
+  --color-accent-900: #15324b;
+  --color-on-accent: #f2f2f3;
+  --color-up: #1f6b3a;
+  --color-down: #9b2c2c;
+  --color-flat: #5d5d60;
+  --chip-good-bg: #dcefe2; --chip-good-fg: #1f5a33;
+  --chip-watch-bg: #f6ecd9; --chip-watch-fg: #6b4a0e;
+  --chip-bad-bg: #f5dede; --chip-bad-fg: #7d2222;
+  --chip-neutral-bg: #e7e7ea; --chip-neutral-fg: #2b2b2d;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #121214; --color-surface: #19191c; --color-text: #ececee;
+    --color-neutral-200: #232327; --color-neutral-300: #2e2e33; --color-neutral-400: #44444a;
+    --color-neutral-600: #7d7d84; --color-neutral-700: #a0a0a6; --color-neutral-800: #c4c4ca;
+    --color-accent: #6ea8d8; --color-accent-100: #1a2a39; --color-accent-700: #8dbde4;
+    --color-accent-800: #b0d2ee; --color-accent-900: #1e3d58; --color-on-accent: #f2f2f3;
+    --color-up: #6cc58a; --color-down: #e58585; --color-flat: #a0a0a6;
+    --chip-good-bg: #173524; --chip-good-fg: #9fdcb3;
+    --chip-watch-bg: #3a2e14; --chip-watch-fg: #eccf8e;
+    --chip-bad-bg: #3d1c1c; --chip-bad-fg: #f0a9a9;
+    --chip-neutral-bg: #2a2a2f; --chip-neutral-fg: #dadade;
+    color-scheme: dark;
+  }
+}

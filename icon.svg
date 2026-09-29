@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#15324b"/>
+  <g fill="none" stroke="#f2f2f3" stroke-width="10">
+    <path d="M60 60h60M60 60v60M452 60h-60M452 60v60M60 452h60M60 452v-60M452 452h-60M452 452v-60"/>
+  </g>
+  <polyline points="110,340 190,260 250,300 330,190 400,230" fill="none" stroke="#6ea8d8" stroke-width="28" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="110" y="370" width="290" height="14" fill="#f2f2f3"/>
+</svg>
