@@ -1,119 +1,112 @@
 {
  "schema": 1,
- "generated_at": "2026-09-29T11:01:42+00:00",
+ "generated_at": "2026-09-29T11:36:02+00:00",
  "trading_day": "2026-09-28",
  "data_date": "2026-09-28",
  "stale": false,
  "mode": "quiet",
  "alerts": [],
- "narrative": "Today’s market retreat was anchored by a wave of risk aversion after confidential details of Anthropic’s upcoming IPO suggested tighter AI regulation and potential earnings headwinds, pushing the VIX to its highest level in months. The resulting dollar rally and yield surge forced a broad sell‑off in risk assets, leaving safe‑haven metals sharply lower as investors re‑priced macro‑inflation expectations.",
+ "narrative": "Today's session was dominated by AI‑risk jitters after Anthropic’s IPO details leaked, pushing volatility higher and prompting risk‑off trading across tech‑heavy sectors. The combination of a 10‑year yield above 5% and Fed talk of further rate hikes amplified pressure on growth‑sensitive assets, dragging equities lower while gold held modest gains.",
  "sentiment": {
-  "avg": -0.172,
-  "bullish": 6,
-  "bearish": 19,
-  "neutral": 15
+  "avg": -0.104,
+  "bullish": 9,
+  "bearish": 14,
+  "neutral": 2
  },
  "news": [
   {
-   "title": "Boston-bound Delta flight makes emergency landing in Portugal after smoke fills cabin - New York Post",
-   "url": "https://nypost.com/2026/09/28/world-news/boston-bound-delta-flight-makes-emergency-landing-in-portugal-after-smoke-fills-cabin/",
-   "source": "New York Post",
-   "asset": "",
+   "title": "Nvidia announces jaw-dropping $150 billion stock buyback, largest single authorization in history - Yahoo Finance",
+   "url": "https://finance.yahoo.com/technology/article/nvidia-announces-jaw-dropping-150-billion-stock-buyback-largest-single-authorization-in-history-121342628.html",
+   "source": "Yahoo Entertainment",
+   "asset": "Tech",
+   "score": 0.8,
+   "direction": "up"
+  },
+  {
+   "title": "The Bond Market Is Getting Closer to Sounding Alarm on Economy - Bloomberg.com",
+   "url": "https://www.bloomberg.com/news/articles/2026-09-27/the-bond-market-is-getting-closer-to-sounding-alarm-on-economy",
+   "source": "Bloomberg",
+   "asset": "Bonds",
    "score": -0.7,
    "direction": "down"
   },
   {
-   "title": "Exclusive | Californians flee for off-grid safe houses in Montana and Idaho with doomsday bunkers - New York Post",
-   "url": "https://nypost.com/2026/09/27/us-news/californians-flee-for-off-grid-safe-houses-in-montana-and-idaho-with-doomsday-bunkers/",
-   "source": "New York Post",
-   "asset": "",
-   "score": -0.7,
-   "direction": "down"
-  },
-  {
-   "title": "Parents confront a new fear: Could AI end humanity before their kids grow up? - CNN",
-   "url": "https://www.cnn.com/2026/09/28/us/ai-human-extinction-parents-kids-safety",
-   "source": "CNN",
-   "asset": "Tech",
+   "title": "Stock Market Today: Rejected Iran Truce Pushes Oil, Yields Higher; Dow Futures Slip — Live Updates - WSJ",
+   "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-28-2026",
+   "source": "The Wall Street Journal",
+   "asset": "Oil",
    "score": -0.6,
    "direction": "down"
   },
   {
-   "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
-   "url": "https://www.nbcnews.com/tech/tech-news/openai-pauses-training-latest-models-agents-searched-us-government-sit-rcna600098",
-   "source": "NBC News",
+   "title": "EXCLUSIVE: Google bets $15B on Finland as nation's president explains why",
+   "url": "https://www.foxbusiness.com/fox-news-world/exclusive-google-bets-15b-finland-nations-president-explains-why",
+   "source": "Fox Business",
    "asset": "Tech",
+   "score": 0.6,
+   "direction": "up"
+  },
+  {
+   "title": "Trump ‘very seriously’ considering diesel export ban as global supply crunch worsens",
+   "url": "https://www.cnbc.com/2026/09/28/diesel-oil-trump-export-ban-fuel-prices.html",
+   "source": "CNBC",
+   "asset": "Energy",
    "score": -0.6,
    "direction": "down"
   },
   {
-   "title": "Thinking about buying stocks instead of a home? The S&P 500 has blown away the housing market - Fortune",
-   "url": "https://fortune.com/2026/09/27/stocks-vs-homeownership-renting-housing-market-mortgage-rates-sp500/",
-   "source": "Fortune",
+   "title": "If a Stock Market Crash Is Coming, Warren Buffett Says Investors Should Make This 1 Move Right Now - The Motley Fool",
+   "url": "https://www.fool.com/investing/2026/09/27/if-a-stock-market-crash-is-coming-warren-buffett-s/",
+   "source": "Motley Fool",
    "asset": "S&P 500",
    "score": 0.6,
    "direction": "up"
   },
   {
-   "title": "The Moves That Backfired on Trump and Drove Interest Rates and Inflation Higher - WSJ",
-   "url": "https://www.wsj.com/economy/trump-economy-inflation-jobs-724e4da8",
-   "source": "The Wall Street Journal",
-   "asset": "",
+   "title": "Fed raises rates for first time in years: What it means for your wallet",
+   "url": "https://www.foxbusiness.com/personal-finance/fed-raises-rates-first-time-years-what-means-your-wallet",
+   "source": "Fox Business",
+   "asset": "Bonds",
    "score": -0.6,
    "direction": "down"
   },
   {
-   "title": "Only US private passenger train files Chapter 11 bankruptcy - thestreet.com",
-   "url": "https://www.thestreet.com/travel/brightline-passenger-train-company-files-chapter-11-bankruptcy",
-   "source": "TheStreet",
-   "asset": "",
-   "score": -0.6,
-   "direction": "down"
-  },
-  {
-   "title": "Sensex, Nifty end sharply lower; PSU Bank shares bear brunt",
-   "url": "https://www.business-standard.com/markets/capital-market-news/sensex-nifty-end-sharply-lower-psu-bank-shares-bear-brunt-126092800755_1.html",
-   "source": "Business Standard",
-   "asset": "",
+   "title": "China Stocks Sink To One-Year Low As Proposed US Curbs Hammer Optical Suppliers",
+   "url": "https://biztoc.com/x/1e54d6e16c0348dd",
+   "source": "Biztoc.com",
+   "asset": "Nasdaq",
    "score": -0.6,
    "direction": "down"
   }
  ],
  "watch": [
   {
-   "date": "28 Sep",
-   "iso_date": "2026-09-28",
-   "name": "Federal Reserve Policy Meeting",
-   "why": "The Fed’s rate decision will confirm whether policy is tightening further amid rising yields.",
-   "expect": "Markets will react sharply to any hint of a larger rate hike or altered forward guidance."
-  },
-  {
    "date": "5 Oct",
    "iso_date": "2026-10-05",
    "name": "U.S. Non‑Farm Payrolls",
-   "why": "Employment data will test the Fed’s narrative that labor markets can sustain higher rates.",
-   "expect": "A stronger report could fuel further yield gains; a weaker one may pause the rate‑rise cycle."
+   "why": "Labor market strength will influence the Fed’s willingness to keep raising rates.",
+   "expect": "Broad consensus for solid job growth, reinforcing upward pressure on yields."
   },
   {
    "date": "12 Oct",
    "iso_date": "2026-10-12",
    "name": "Anthropic IPO Pricing",
-   "why": "The pricing will set the benchmark for AI‑related equity valuations and regulatory sentiment.",
-   "expect": "A lower‑than‑expected price could deepen the tech sell‑off, while a premium could revive risk appetite."
+   "why": "The final pricing will set a benchmark for AI‑related offerings and market risk perception.",
+   "expect": "Potential discount to earlier guidance, triggering further equity volatility."
   },
   {
    "date": "19 Oct",
    "iso_date": "2026-10-19",
    "name": "UK CPI Release",
-   "why": "Inflation trends in the UK will influence GBP/USD and European central‑bank policy outlooks.",
-   "expect": "A drop below 2% could boost the pound and lift European equities."
+   "why": "A slowdown in UK inflation could affect the pound and European equity sentiment.",
+   "expect": "Likely modest decline, supporting GBP/USD modestly higher."
   },
   {
-   "date": "2 Nov",
-   "iso_date": "2026-11-02",
-   "name": "OPEC+ Production Decision",
-   "why": "Adjustments to output will directly affect oil prices, which remain a key driver of energy stocks and inflation expectations.",
-   "expect": "A supply cut could revive energy sector gains; a hike may pressure inflation‑sensitive assets."
+   "date": "31 Oct",
+   "iso_date": "2026-10-31",
+   "name": "Eurozone Central Bank (ECB) Press Conference",
+   "why": "ECB policy outlook will shape euro‑dollar dynamics and global liquidity.",
+   "expect": "Possible hint of a more dovish tone if inflation eases, easing pressure on the euro."
   }
  ],
  "movers": [
@@ -121,43 +114,168 @@
    "name": "VIX",
    "category": "Volatility",
    "pct": 8.07,
-   "why": "VIX +8.07% – Spike reflects heightened fear after leaked Anthropic IPO details raised concerns over AI‑related regulatory risk and potential slowdown in tech spending."
+   "why": "VIX +8.07% – Spike reflects heightened fear after leaked Anthropic IPO details heightened AI‑risk concerns and amplified Fed‑rate‑rise expectations."
   },
   {
    "name": "Silver",
    "category": "Commodity",
    "pct": -4.71,
-   "why": "Silver -4.71% – Sharp drop tied to a broader sell‑off in precious metals as the dollar strengthened on a 5%‑plus 10‑year Treasury yield."
-  },
-  {
-   "name": "Gold",
-   "category": "Commodity",
-   "pct": -3.54,
-   "why": "Gold -3.54% – Losses stem from the same yield‑driven dollar rally and the market’s shift away from safe‑haven assets amid AI‑risk angst."
+   "why": "Silver -4.71% – Sharp drop tied to a sell‑off in precious metals as the U.S. 10‑year yield breached 5%, making non‑yielding assets less attractive."
   },
   {
    "name": "Communication",
    "category": "Sector ETF",
    "pct": -1.58,
-   "why": "Communication -1.58% – Telecom stocks fell as investors trimmed exposure to discretionary tech after the Anthropic leak, fearing lower near‑term earnings."
+   "why": "Communication -1.58% – Broad‑band and media stocks fell on the same AI‑risk alarm, with investors fearing regulatory scrutiny could curb growth."
   },
   {
    "name": "Consumer Discr.",
    "category": "Sector ETF",
    "pct": -1.41,
-   "why": "Consumer Discr. -1.41% – Retail and media names slipped on the same risk‑off tone, with consumers likely to delay big‑ticket AI‑driven purchases."
+   "why": "Consumer Discr. -1.41% – Retailers slipped as higher yields pressured discretionary spending and the market digested weaker consumer‑price data from the UK."
+  },
+  {
+   "name": "Financials",
+   "category": "Sector ETF",
+   "pct": -1.19,
+   "why": "Financials -1.19% – Banks and insurers retreated amid rising yields that could compress loan margins and fresh Fed oversight chatter."
   }
  ],
  "picks": {
-  "status": "not_built",
-  "items": []
+  "status": "ok",
+  "items": [
+   {
+    "ticker": "AMD",
+    "name": "AMD",
+    "theme": "AI chips",
+    "verdict": "worth_a_look",
+    "reason": "Fell 3.6% in a day, mostly with its sector. Still healthy (profit margin 16%).",
+    "pct": -3.61,
+    "pct_label": "in a day",
+    "d1": -3.61,
+    "d5": -1.24,
+    "from_high52": -3.61,
+    "price": 607.87,
+    "bench": "SOXX",
+    "bench_move": -2.08,
+    "checks": [
+     {
+      "name": "Company still healthy?",
+      "result": "pass",
+      "text": "profit margin 16%, generates cash, debt 0.1× equity, sales +50% a year"
+     },
+     {
+      "name": "Fell with the market?",
+      "result": "pass",
+      "text": "It fell 3.6% in a day; its yardstick moved -2.1%."
+     },
+     {
+      "name": "What does the news say?",
+      "result": "pass",
+      "text": "AI IPO leak raised broader AI risk concerns"
+     }
+    ],
+    "headlines": [
+     {
+      "title": "Stock market today: Dow, S&P 500, Nasdaq futures waver as leaked Anthropic IPO details raise alarm about AI risks",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-29-dow-sp-500-nasdaq-080526442.html",
+      "source": "Yahoo Finance",
+      "published": "2026-09-29"
+     }
+    ]
+   },
+   {
+    "ticker": "NVO",
+    "name": "Novo Nordisk",
+    "theme": "Medicine",
+    "verdict": "watch",
+    "reason": "Fell 18.5% from its high this month while its sector fell less — cause not clear yet.",
+    "pct": -18.52,
+    "pct_label": "from its high this month",
+    "d1": -0.23,
+    "d5": -2.74,
+    "from_high52": -36.48,
+    "price": 38.71,
+    "bench": "XLV",
+    "bench_move": -0.78,
+    "checks": [
+     {
+      "name": "Company still healthy?",
+      "result": "pass",
+      "text": "profit margin 35%, generates cash, debt 0.6× equity, sales +2% a year"
+     },
+     {
+      "name": "Fell with the market?",
+      "result": "fail",
+      "text": "It fell 18.5% from its high this month; its yardstick moved -0.8%."
+     },
+     {
+      "name": "What does the news say?",
+      "result": "unclear",
+      "text": "Competitor outperformed its oral semaglutide"
+     }
+    ],
+    "headlines": [
+     {
+      "title": "LLY Vs NVO: Foundayo Beats Novo’s Oral Semaglutide On Weight Loss, Blood Sugar In New Finding",
+      "url": "https://finance.yahoo.com/healthcare/articles/lly-vs-nvo-foundayo-beats-102114784.html",
+      "source": "Stocktwits",
+      "published": "2026-09-29"
+     }
+    ]
+   },
+   {
+    "ticker": "META",
+    "name": "Meta",
+    "theme": "Technology",
+    "verdict": "watch",
+    "reason": "Fell 8.0% from its high this month while its sector fell less — cause not clear yet.",
+    "pct": -7.97,
+    "pct_label": "from its high this month",
+    "d1": -4.79,
+    "d5": -3.46,
+    "from_high52": -7.97,
+    "price": 715.62,
+    "bench": "XLK",
+    "bench_move": -0.89,
+    "checks": [
+     {
+      "name": "Company still healthy?",
+      "result": "pass",
+      "text": "profit margin 30%, generates cash, debt 0.4× equity, sales +28% a year"
+     },
+     {
+      "name": "Fell with the market?",
+      "result": "fail",
+      "text": "It fell 8.0% from its high this month; its yardstick moved -0.9%."
+     },
+     {
+      "name": "What does the news say?",
+      "result": "pass",
+      "text": "AI agents seen as threat to business model"
+     }
+    ],
+    "headlines": [
+     {
+      "title": "Muse and other AI Agents will be a nightmare for friction as a business model",
+      "url": "https://finance.yahoo.com/technology/article/muse-and-other-ai-agents-will-be-a-nightmare-for-friction-as-a-business-model-100000672.html",
+      "source": "Yahoo Finance",
+      "published": "2026-09-29"
+     }
+    ]
+   }
+  ],
+  "checked": 22,
+  "skipped": [],
+  "news_checked": true
  },
  "hype": {
   "status": "not_built",
   "items": []
  },
  "ledger": {
-  "status": "not_built"
+  "status": "started",
+  "count": 1
  },
  "sources": [
   "Yahoo Finance",

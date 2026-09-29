@@ -1,0 +1,12 @@
+[
+ {
+  "date": "2026-09-28",
+  "ticker": "AMD",
+  "name": "AMD",
+  "reason": "Fell 3.6% in a day, mostly with its sector. Still healthy (profit margin 16%).",
+  "price": 607.87,
+  "core_price": 146.12,
+  "return_pct": -0.0,
+  "core_return_pct": -0.0
+ }
+]
