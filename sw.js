@@ -1,6 +1,6 @@
 // Installable + works offline with the last briefing. Network-first for everything, so a new
 // day's data or a new build shows as soon as there's signal. Bump CACHE when shipping a new shell.
-const CACHE = "brief-v9";   // v9: score out of 10
+const CACHE = "brief-v10";  // v10: news sources count
 const SHELL = ["./", "./index.html", "./app.css", "./tokens.css", "./app.js", "./manifest.json", "./push-config.js", "./sizing.js", "./lock.js",
                "./icon.svg", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 

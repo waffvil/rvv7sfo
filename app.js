@@ -116,7 +116,8 @@ function openPick(it) {
         el("div", { class: "x" }, el("strong", { text: c.name }), el("br"), el("span", { text: c.text })));
     }),
     ...scoreBlock(it.score),
-    el("div", { class: "sub", style: "margin:12px 0 4px", text: "Headlines" }),
+    el("div", { class: "sub", style: "margin:12px 0 4px", text: it.news_count != null
+      ? `Headlines — ${it.news_count} stories from ${it.news_sites} sites checked (Yahoo, Google News, NewsAPI)` : "Headlines" }),
     ...(it.headlines.length ? it.headlines.map((h) => {
       const url = safeUrl(h.url);
       return el(url ? "a" : "div", url ? { class: "nrow", href: url, target: "_blank", rel: "noopener noreferrer" } : { class: "nrow" },
