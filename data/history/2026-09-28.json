@@ -1,17 +1,17 @@
 {
  "schema": 1,
- "generated_at": "2026-09-29T11:36:02+00:00",
+ "generated_at": "2026-09-29T11:41:01+00:00",
  "trading_day": "2026-09-28",
  "data_date": "2026-09-28",
  "stale": false,
  "mode": "quiet",
  "alerts": [],
- "narrative": "Today's session was dominated by AI‑risk jitters after Anthropic’s IPO details leaked, pushing volatility higher and prompting risk‑off trading across tech‑heavy sectors. The combination of a 10‑year yield above 5% and Fed talk of further rate hikes amplified pressure on growth‑sensitive assets, dragging equities lower while gold held modest gains.",
+ "narrative": "The session was dominated by a risk‑off pivot as a leak on Anthropic’s IPO heightened AI‑regulation anxiety, pushing volatility higher and prompting a flight to quality. Rising U.S. 10‑year yields above 5% reinforced dollar strength, dragging down precious metals and risk‑sensitive sectors, while the broader equity market slipped across the board.",
  "sentiment": {
-  "avg": -0.104,
-  "bullish": 9,
-  "bearish": 14,
-  "neutral": 2
+  "avg": -0.169,
+  "bullish": 7,
+  "bearish": 16,
+  "neutral": 3
  },
  "news": [
   {
@@ -23,10 +23,18 @@
    "direction": "up"
   },
   {
-   "title": "The Bond Market Is Getting Closer to Sounding Alarm on Economy - Bloomberg.com",
-   "url": "https://www.bloomberg.com/news/articles/2026-09-27/the-bond-market-is-getting-closer-to-sounding-alarm-on-economy",
-   "source": "Bloomberg",
-   "asset": "Bonds",
+   "title": "Trump ‘very seriously’ considering diesel export ban as global supply crunch worsens",
+   "url": "https://www.cnbc.com/2026/09/28/diesel-oil-trump-export-ban-fuel-prices.html",
+   "source": "CNBC",
+   "asset": "Energy",
+   "score": -0.7,
+   "direction": "down"
+  },
+  {
+   "title": "China Stocks Sink To One-Year Low As Proposed US Curbs Hammer Optical Suppliers",
+   "url": "https://biztoc.com/x/1e54d6e16c0348dd",
+   "source": "Biztoc.com",
+   "asset": "Tech",
    "score": -0.7,
    "direction": "down"
   },
@@ -47,17 +55,17 @@
    "direction": "up"
   },
   {
-   "title": "Trump ‘very seriously’ considering diesel export ban as global supply crunch worsens",
-   "url": "https://www.cnbc.com/2026/09/28/diesel-oil-trump-export-ban-fuel-prices.html",
-   "source": "CNBC",
-   "asset": "Energy",
+   "title": "Asia stocks slip as oil, yields rise; chipmakers hit by OpenAI pause",
+   "url": "https://www.investing.com/news/stock-market-news/asia-stocks-slip-as-oil-yields-rise-chipmakers-hit-by-openai-pause-4919316",
+   "source": "Investing.com",
+   "asset": "Nasdaq",
    "score": -0.6,
    "direction": "down"
   },
   {
-   "title": "If a Stock Market Crash Is Coming, Warren Buffett Says Investors Should Make This 1 Move Right Now - The Motley Fool",
-   "url": "https://www.fool.com/investing/2026/09/27/if-a-stock-market-crash-is-coming-warren-buffett-s/",
-   "source": "Motley Fool",
+   "title": "Thinking about buying stocks instead of a home? The S&P 500 has blown away the housing market",
+   "url": "https://fortune.com/2026/09/27/stocks-vs-homeownership-renting-housing-market-mortgage-rates-sp500/",
+   "source": "Fortune",
    "asset": "S&P 500",
    "score": 0.6,
    "direction": "up"
@@ -69,14 +77,6 @@
    "asset": "Bonds",
    "score": -0.6,
    "direction": "down"
-  },
-  {
-   "title": "China Stocks Sink To One-Year Low As Proposed US Curbs Hammer Optical Suppliers",
-   "url": "https://biztoc.com/x/1e54d6e16c0348dd",
-   "source": "Biztoc.com",
-   "asset": "Nasdaq",
-   "score": -0.6,
-   "direction": "down"
   }
  ],
  "watch": [
@@ -84,29 +84,29 @@
    "date": "5 Oct",
    "iso_date": "2026-10-05",
    "name": "U.S. Non‑Farm Payrolls",
-   "why": "Labor market strength will influence the Fed’s willingness to keep raising rates.",
-   "expect": "Broad consensus for solid job growth, reinforcing upward pressure on yields."
+   "why": "Core labor market data will test the Fed’s narrative on “labor‑tightness.”",
+   "expect": "A stronger‑than‑expected report could spur further rate‑hike bets; a miss may ease rate‑risk."
   },
   {
    "date": "12 Oct",
    "iso_date": "2026-10-12",
-   "name": "Anthropic IPO Pricing",
-   "why": "The final pricing will set a benchmark for AI‑related offerings and market risk perception.",
-   "expect": "Potential discount to earlier guidance, triggering further equity volatility."
+   "name": "U.K. CPI Release",
+   "why": "Inflation trends in the UK influence GBP/USD and European equity sentiment.",
+   "expect": "A dip below 2% could lift the FTSE; a surprise rise may keep the pound under pressure."
   },
   {
-   "date": "19 Oct",
-   "iso_date": "2026-10-19",
-   "name": "UK CPI Release",
-   "why": "A slowdown in UK inflation could affect the pound and European equity sentiment.",
-   "expect": "Likely modest decline, supporting GBP/USD modestly higher."
+   "date": "18 Oct",
+   "iso_date": "2026-10-18",
+   "name": "Nvidia Q3 Earnings Call",
+   "why": "Sets the benchmark for AI‑related earnings and capital allocation across tech.",
+   "expect": "Guidance above consensus could revive risk appetite; a miss may deepen the sector sell‑off."
   },
   {
    "date": "31 Oct",
    "iso_date": "2026-10-31",
-   "name": "Eurozone Central Bank (ECB) Press Conference",
-   "why": "ECB policy outlook will shape euro‑dollar dynamics and global liquidity.",
-   "expect": "Possible hint of a more dovish tone if inflation eases, easing pressure on the euro."
+   "name": "European Central Bank Press Conference",
+   "why": "Signals the ECB’s stance on rates and its response to divergent inflation trajectories.",
+   "expect": "Any indication of tightening ahead of schedule could weigh on the euro and Euro‑Stoxx."
   }
  ],
  "movers": [
@@ -114,31 +114,31 @@
    "name": "VIX",
    "category": "Volatility",
    "pct": 8.07,
-   "why": "VIX +8.07% – Spike reflects heightened fear after leaked Anthropic IPO details heightened AI‑risk concerns and amplified Fed‑rate‑rise expectations."
+   "why": "VIX +8.07% – Spike reflects heightened fear after leaked Anthropic IPO documents amplified concerns over AI‑related regulatory risk."
   },
   {
    "name": "Silver",
    "category": "Commodity",
    "pct": -4.71,
-   "why": "Silver -4.71% – Sharp drop tied to a sell‑off in precious metals as the U.S. 10‑year yield breached 5%, making non‑yielding assets less attractive."
+   "why": "Silver -4.71% – Sharp sell‑off mirrors gold’s slide as investors flee risk‑off assets amid rising U.S. yields."
+  },
+  {
+   "name": "Gold",
+   "category": "Commodity",
+   "pct": -3.54,
+   "why": "Gold -3.54% – Decline driven by a stronger dollar and 10‑year Treasury yields crossing 5%, reducing safe‑haven appeal."
   },
   {
    "name": "Communication",
    "category": "Sector ETF",
    "pct": -1.58,
-   "why": "Communication -1.58% – Broad‑band and media stocks fell on the same AI‑risk alarm, with investors fearing regulatory scrutiny could curb growth."
+   "why": "Communication -1.58% – Weaker outlook for ad‑spend and subscriber growth after Nvidia’s $150 bn AI windfall shifted capital to cloud‑computing peers."
   },
   {
    "name": "Consumer Discr.",
    "category": "Sector ETF",
    "pct": -1.41,
-   "why": "Consumer Discr. -1.41% – Retailers slipped as higher yields pressured discretionary spending and the market digested weaker consumer‑price data from the UK."
-  },
-  {
-   "name": "Financials",
-   "category": "Sector ETF",
-   "pct": -1.19,
-   "why": "Financials -1.19% – Banks and insurers retreated amid rising yields that could compress loan margins and fresh Fed oversight chatter."
+   "why": "Consumer Discr. -1.41% – Retail earnings disappointment and lingering inflation worries dampened discretionary spending sentiment."
   }
  ],
  "picks": {
@@ -172,7 +172,7 @@
      {
       "name": "What does the news say?",
       "result": "pass",
-      "text": "AI IPO leak raised broader AI risk concerns"
+      "text": "AI‑risk leak worries investors broadly"
      }
     ],
     "headlines": [
@@ -212,14 +212,26 @@
      {
       "name": "What does the news say?",
       "result": "unclear",
-      "text": "Competitor outperformed its oral semaglutide"
+      "text": "Drug‑deal news raised valuation concerns"
      }
     ],
     "headlines": [
      {
-      "title": "LLY Vs NVO: Foundayo Beats Novo’s Oral Semaglutide On Weight Loss, Blood Sugar In New Finding",
-      "url": "https://finance.yahoo.com/healthcare/articles/lly-vs-nvo-foundayo-beats-102114784.html",
-      "source": "Stocktwits",
+      "title": "Novo Nordisk Obtains Exclusive Rights to Experimental Obesity Drug From Jiangsu Hengrui",
+      "url": "https://finance.yahoo.com/healthcare/articles/novo-nordisk-obtains-exclusive-rights-074949213.html",
+      "source": "MT Newswires",
+      "published": "2026-09-29"
+     },
+     {
+      "title": "Hengrui Pharma shares rise as Novo Nordisk signs $2.6 billion drug deal",
+      "url": "https://finance.yahoo.com/healthcare/articles/hengrui-pharma-shares-rise-novo-054650384.html",
+      "source": "Investing.com",
+      "published": "2026-09-29"
+     },
+     {
+      "title": "Novo and Hengrui Pharma enter exclusive license agreement for once-weekly oral GLP-1/GIP dual receptor agonist HRS-1596",
+      "url": "https://finance.yahoo.com/healthcare/articles/novo-hengrui-pharma-enter-exclusive-043500469.html",
+      "source": "GlobeNewswire",
       "published": "2026-09-29"
      }
     ]
@@ -251,15 +263,21 @@
      },
      {
       "name": "What does the news say?",
-      "result": "pass",
-      "text": "AI agents seen as threat to business model"
+      "result": "unclear",
+      "text": "AI‑product focus doubts hurt sentiment"
      }
     ],
     "headlines": [
      {
-      "title": "Muse and other AI Agents will be a nightmare for friction as a business model",
-      "url": "https://finance.yahoo.com/technology/article/muse-and-other-ai-agents-will-be-a-nightmare-for-friction-as-a-business-model-100000672.html",
-      "source": "Yahoo Finance",
+      "title": "Meta is looking beyond consumers to turn its massive AI investment into profits.",
+      "url": "https://finance.yahoo.com/small-business/articles/meta-looking-beyond-consumers-turn-093004690.html",
+      "source": "Axios",
+      "published": "2026-09-29"
+     },
+     {
+      "title": "Meta’s Muse AI Agent Gets New Tools for Small Businesses",
+      "url": "https://finance.yahoo.com/m/13d4ed29-2a20-3d4d-a04a-8ef586e2a321/meta%E2%80%99s-muse-ai-agent-gets-new.html",
+      "source": "The Wall Street Journal",
       "published": "2026-09-29"
      }
     ]
