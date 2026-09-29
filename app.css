@@ -142,3 +142,5 @@ body.locked { overflow: hidden; }
 #notify-details > summary::-webkit-details-marker { display: none; }
 #notify-details > summary h2::after { content: " ▸"; font-size: 13px; color: var(--color-neutral-700); }
 #notify-details[open] > summary h2::after { content: " ▾"; }
+.score-head { display: flex; gap: 8px; align-items: center; margin: 14px 0 2px; font-size: 16px; }
+.sz-line .pts { font-weight: 700; white-space: nowrap; }

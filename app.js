@@ -81,7 +81,9 @@ function renderPicks(d) {
         el("div", { class: "ph" }, el("span", { class: "tk", text: it.ticker }),
           el("strong", { class: it.pct >= 0 ? "up" : "down", text: pct(it.pct) })),
         el("div", { class: "sub", text: `${it.name} · ${it.theme} · ${it.pct_label}` }),
-        el("span", { class: `chip ${cls}`, style: "align-self:flex-start", text: label }),
+        el("div", { style: "display:flex;gap:6px;align-items:center" },
+          el("span", { class: `chip ${cls}`, text: label }),
+          it.score ? el("span", { class: "sub", text: `Score ${it.score.total}/${it.score.max}` }) : null),
         el("div", { style: "font-size:12px;line-height:1.4", text: it.reason }));
       card.onclick = () => openPick(it);
       box.append(card);
@@ -113,6 +115,7 @@ function openPick(it) {
       return el("div", { class: "wrow" }, el("span", { class: `d ${mcls}`, text: mark }),
         el("div", { class: "x" }, el("strong", { text: c.name }), el("br"), el("span", { text: c.text })));
     }),
+    ...scoreBlock(it.score),
     el("div", { class: "sub", style: "margin:12px 0 4px", text: "Headlines" }),
     ...(it.headlines.length ? it.headlines.map((h) => {
       const url = safeUrl(h.url);
@@ -123,6 +126,24 @@ function openPick(it) {
       text: "Or: the same money in the global index fund (VWRP) already includes most of these companies. These rules are new and unproven — the ledger tracks whether they beat the index." }),
     investForm(it));
   showSheet();
+}
+
+function scoreBand(t) { return t >= 7 ? ["STRONG CASE", "good"] : t >= 5 ? ["SOME CASE", "watch"] : ["WEAK CASE", "bad"]; }
+
+function scoreBlock(sc) {
+  if (!sc) return [];
+  const [band, cls] = scoreBand(sc.total);
+  return [
+    el("div", { class: "score-head" }, el("strong", { text: `Score ${sc.total}/${sc.max}` }),
+      el("span", { class: `chip ${cls}`, text: band })),
+    ...sc.parts.map((p) => el("div", { class: "sz-line" },
+      el("span", {}, el("strong", { text: p.name }), el("br"), el("span", { class: "sub", text: p.text })),
+      el("span", { class: "pts", text: `${p.points}/2` }))),
+    ...sc.risks.map((r) => el("div", { class: "wrow" }, el("span", { class: "d bad", text: "!" }),
+      el("div", { class: "x", text: r }))),
+    el("p", { class: "sub", style: "margin-top:6px",
+      text: "The score is built from numbers by fixed rules — a starting point for your own research, not proof." }),
+  ];
 }
 
 function showSheet() {
@@ -208,6 +229,9 @@ function investForm(it) {
   box.append(
     el("div", { class: `sz-answer chip ${cls}`, text: { yes: "YES — A SMALL AMOUNT", no: "NO", index: "INDEX INSTEAD" }[r.answer] }),
     el("p", { class: "narr", style: "font-size:15px;font-weight:600", text: r.headline }),
+    ...(it.score ? [el("p", { class: "sub", text:
+      `Score ${it.score.total}/10 (${scoreBand(it.score.total)[0].toLowerCase()}) — check the score breakdown above and ` +
+      "do your own research before buying." })] : []),
     line("Your investment savings", gbp(savings), true),
     line("→ Global index fund (VWRP), 80%", gbp(r.core)),
     line("→ Pot for individual picks, 20%", gbp(r.picksPot)),
