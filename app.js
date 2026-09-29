@@ -119,10 +119,69 @@ function openPick(it) {
         el("span", { class: "t", text: h.title }), el("span", { class: "s", text: [h.source, h.published].filter(Boolean).join(" · ") }));
     }) : [el("div", { class: "sub", text: "No recent headlines found." })]),
     el("p", { class: "sub", style: "margin-top:12px",
-      text: "Or: the same money in the global index fund (VWRP) already includes most of these companies. These rules are new and unproven — the ledger tracks whether they beat the index." }));
+      text: "Or: the same money in the global index fund (VWRP) already includes most of these companies. These rules are new and unproven — the ledger tracks whether they beat the index." }),
+    investForm(it));
   $("pick-sheet").hidden = false;
   document.body.classList.add("locked");
   $("pick-sheet").scrollTop = 0;
+}
+
+// ---------- "Should I invest, and how much?" — worked out on this phone; nothing is sent anywhere ----------
+const gbp = (v) => `£${Math.round(v).toLocaleString("en-GB")}`;
+
+function loadSizing() {
+  try { return JSON.parse(localStorage.getItem("sizing") || "{}"); } catch (_) { return {}; }
+}
+function saveSizing(v) {
+  try { localStorage.setItem("sizing", JSON.stringify(v)); } catch (_) {}
+}
+
+function field(id, label, value, hint) {
+  return el("label", { class: "field", for: id }, el("span", { text: label }),
+    el("span", { class: "money" }, "£", el("input", { id, type: "number", inputmode: "decimal", min: "0", step: "100",
+      value: value ? String(value) : "", placeholder: hint })));
+}
+
+function investForm(it) {
+  const saved = loadSizing();
+  const box = el("div", { class: "invest" },
+    el("h2", { text: `Should I invest in ${it.ticker}?` }),
+    el("div", { class: "sub", text: "Saved on this phone only — never sent anywhere." }),
+    field("sz-savings", "Your savings (e.g. in J.P. Morgan)", saved.savings, "23000"),
+    field("sz-monthly", "Monthly essential spending (rent, bills, food)", saved.monthly, "1200"),
+    el("button", { class: "btn", type: "button", id: "sz-go", text: "Work it out" }),
+    el("div", { id: "sz-out" }));
+  const run = () => {
+    const savings = parseFloat(box.querySelector("#sz-savings").value);
+    const monthly = parseFloat(box.querySelector("#sz-monthly").value);
+    const r = sizePick(savings, monthly, it.verdict);
+    const out = box.querySelector("#sz-out");
+    if (!r.ok) { out.replaceChildren(el("p", { class: "sub", text: r.error })); return; }
+    saveSizing({ savings, monthly });
+    const line = (a, b, strong) => el("div", { class: `sz-line${strong ? " strong" : ""}` }, el("span", { text: a }), el("span", { text: b }));
+    const cls = { yes: "good", no: "bad", index: "watch" }[r.answer];
+    out.replaceChildren(
+      el("div", { class: `sz-answer chip ${cls}`, text: { yes: "YES — A SMALL AMOUNT", no: "NO", index: "INDEX INSTEAD" }[r.answer] }),
+      el("p", { class: "narr", style: "font-size:15px;font-weight:600", text: r.headline }),
+      line("Your savings", gbp(savings)),
+      line(`Keep as emergency buffer (${SIZING.bufferMonths} × ${gbp(monthly)})`, `− ${gbp(r.buffer)}`),
+      line("Money you could invest", gbp(r.investable), true),
+      ...(r.investable > 0 ? [
+        line("→ Global index fund (VWRP), 80%", gbp(r.core)),
+        line("→ Pot for individual picks, 20%", gbp(r.picksPot)),
+        line(`→ Most in any one stock (5%)`, gbp(r.perStock)),
+        line(`${it.ticker} now`, gbp(r.amount), true),
+      ] : []),
+      el("p", { class: "sub", style: "margin-top:10px", text:
+        "J.P. Morgan Personal Investing can't buy single shares like this — you'd need a DIY Stocks & Shares ISA " +
+        "(e.g. Trading 212, Freetrade). Move money by ISA transfer, not withdrawal, so it doesn't use this year's £20,000 allowance." }),
+      el("p", { class: "sub", text:
+        "Only invest money you won't need for 5+ years. If a fall right after buying would upset you, spread the index money over 3–6 months. " +
+        "Fixed rules, not personal advice." }));
+  };
+  box.querySelector("#sz-go").onclick = run;
+  if (saved.savings && saved.monthly) setTimeout(run, 0);
+  return box;
 }
 
 function closePick() {
@@ -184,9 +243,16 @@ function renderFooter(d) {
 
 async function load() {
   try {
-    const r = await fetch("data/today.json", { cache: "no-store" });
-    if (!r.ok) throw new Error(r.status);
-    const d = await r.json();
+    let d;
+    try {
+      d = await fetchData("data/today.json");
+    } catch (e) {
+      if (!(e instanceof NeedsPasscode)) throw e;
+      $("main").hidden = true;
+      await askPasscode("data/today.json");
+      $("main").hidden = false;
+      d = await fetchData("data/today.json");
+    }
     renderHeader(d); renderPicks(d); renderBrief(d); renderWatch(d); renderHype(d); renderFooter(d);
   } catch (e) {
     $("main").replaceChildren(el("div", { class: "empty", text: "No briefing yet — the first one arrives after the next weekday run." }));
