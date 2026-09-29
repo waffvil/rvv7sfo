@@ -9,6 +9,7 @@ function el(tag, attrs = {}, ...children) {
   for (const [k, v] of Object.entries(attrs)) {
     if (k === "class") n.className = v;
     else if (k === "text") n.textContent = v;
+    else if (typeof v === "function") n[k] = v;
     else n.setAttribute(k, v);
   }
   for (const c of children) if (c != null) n.append(c);
@@ -170,51 +171,53 @@ function saveSizing(v) {
   try { localStorage.setItem("sizing", JSON.stringify(v)); } catch (_) {}
 }
 
-function field(id, label, value, hint) {
-  return el("label", { class: "field", for: id }, el("span", { text: label }),
-    el("span", { class: "money" }, "£", el("input", { id, type: "number", inputmode: "decimal", min: "0", step: "100",
-      value: value ? String(value) : "", placeholder: hint })));
+function savedSavings() { return parseFloat(loadSizing().savings) || 0; }
+
+function setupSavings() {
+  const input = $("savings-input"), note = $("savings-note");
+  const v = savedSavings();
+  if (v) input.value = String(v);
+  $("savings-save").onclick = () => {
+    const n = parseFloat(input.value);
+    if (!(n > 0)) { note.textContent = "Enter an amount above £0."; return; }
+    saveSizing({ savings: n });
+    note.textContent = `Saved: ${gbp(n)} — on this phone only, never sent anywhere.`;
+  };
+}
+
+function goToSavings() {
+  closePick();
+  $("notify-details").open = true;
+  $("notify").scrollIntoView({ behavior: "smooth", block: "start" });
+  setTimeout(() => $("savings-input").focus(), 400);
 }
 
 function investForm(it) {
-  const saved = loadSizing();
-  const box = el("div", { class: "invest" },
-    el("h2", { text: `Should I invest in ${it.ticker}?` }),
-    el("div", { class: "sub", text: "Saved on this phone only — never sent anywhere." }),
-    field("sz-savings", "Your savings (e.g. in J.P. Morgan)", saved.savings, "23000"),
-    field("sz-monthly", "Monthly essential spending (rent, bills, food)", saved.monthly, "1200"),
-    el("button", { class: "btn", type: "button", id: "sz-go", text: "Work it out" }),
-    el("div", { id: "sz-out" }));
-  const run = () => {
-    const savings = parseFloat(box.querySelector("#sz-savings").value);
-    const monthly = parseFloat(box.querySelector("#sz-monthly").value);
-    const r = sizePick(savings, monthly, it.verdict);
-    const out = box.querySelector("#sz-out");
-    if (!r.ok) { out.replaceChildren(el("p", { class: "sub", text: r.error })); return; }
-    saveSizing({ savings, monthly });
-    const line = (a, b, strong) => el("div", { class: `sz-line${strong ? " strong" : ""}` }, el("span", { text: a }), el("span", { text: b }));
-    const cls = { yes: "good", no: "bad", index: "watch" }[r.answer];
-    out.replaceChildren(
-      el("div", { class: `sz-answer chip ${cls}`, text: { yes: "YES — A SMALL AMOUNT", no: "NO", index: "INDEX INSTEAD" }[r.answer] }),
-      el("p", { class: "narr", style: "font-size:15px;font-weight:600", text: r.headline }),
-      line("Your savings", gbp(savings)),
-      line(`Keep as emergency buffer (${SIZING.bufferMonths} × ${gbp(monthly)})`, `− ${gbp(r.buffer)}`),
-      line("Money you could invest", gbp(r.investable), true),
-      ...(r.investable > 0 ? [
-        line("→ Global index fund (VWRP), 80%", gbp(r.core)),
-        line("→ Pot for individual picks, 20%", gbp(r.picksPot)),
-        line(`→ Most in any one stock (5%)`, gbp(r.perStock)),
-        line(`${it.ticker} now`, gbp(r.amount), true),
-      ] : []),
-      el("p", { class: "sub", style: "margin-top:10px", text:
-        "J.P. Morgan Personal Investing can't buy single shares like this — you'd need a DIY Stocks & Shares ISA " +
-        "(e.g. Trading 212, Freetrade). Move money by ISA transfer, not withdrawal, so it doesn't use this year's £20,000 allowance." }),
-      el("p", { class: "sub", text:
-        "Only invest money you won't need for 5+ years. If a fall right after buying would upset you, spread the index money over 3–6 months. " +
-        "Fixed rules, not personal advice." }));
-  };
-  box.querySelector("#sz-go").onclick = run;
-  if (saved.savings && saved.monthly) setTimeout(run, 0);
+  const savings = savedSavings();
+  const box = el("div", { class: "invest" }, el("h2", { text: `Should I invest in ${it.ticker}?` }));
+  const r = sizePick(savings, it.verdict);
+  if (!r.ok) {
+    box.append(el("p", { class: "sub", text: r.error }),
+      el("button", { class: "btn", type: "button", text: "Add my savings", onclick: goToSavings }));
+    return box;
+  }
+  const line = (a, b, strong) => el("div", { class: `sz-line${strong ? " strong" : ""}` }, el("span", { text: a }), el("span", { text: b }));
+  const cls = { yes: "good", no: "bad", index: "watch" }[r.answer];
+  box.append(
+    el("div", { class: `sz-answer chip ${cls}`, text: { yes: "YES — A SMALL AMOUNT", no: "NO", index: "INDEX INSTEAD" }[r.answer] }),
+    el("p", { class: "narr", style: "font-size:15px;font-weight:600", text: r.headline }),
+    line("Your investment savings", gbp(savings), true),
+    line("→ Global index fund (VWRP), 80%", gbp(r.core)),
+    line("→ Pot for individual picks, 20%", gbp(r.picksPot)),
+    line("→ Most in any one stock (5%)", gbp(r.perStock)),
+    line(`${it.ticker} now`, gbp(r.amount), true),
+    el("button", { class: "btn", type: "button", style: "margin-top:10px", text: "Change my savings", onclick: goToSavings }),
+    el("p", { class: "sub", style: "margin-top:10px", text:
+      "J.P. Morgan Personal Investing can't buy single shares like this — you'd need a DIY Stocks & Shares ISA " +
+      "(e.g. Trading 212, Freetrade). Move money by ISA transfer, not withdrawal, so it doesn't use this year's £20,000 allowance." }),
+    el("p", { class: "sub", text:
+      "Only invest money you won't need for 5+ years. If a fall right after buying would upset you, spread the index money over 3–6 months. " +
+      "Fixed rules, not personal advice." }));
   return box;
 }
 
@@ -347,6 +350,7 @@ $("pick-close").onclick = closePick;
 $("pick-sheet").addEventListener("click", (e) => { if (e.target.id === "pick-sheet") closePick(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePick(); });
 
+setupSavings();
 load();
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").then(() => navigator.serviceWorker.ready)

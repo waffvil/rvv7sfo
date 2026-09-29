@@ -80,8 +80,12 @@
 
     <section class="panel" id="notify" hidden><i class="c1"></i><i class="c2"></i>
       <details id="notify-details">
-        <summary class="ph"><h2>Notifications</h2><span class="sub" id="notify-state"></span></summary>
-        <div class="sub" id="notify-help" style="margin-top:6px"></div>
+        <summary class="ph"><h2>Savings &amp; notifications</h2><span class="sub" id="notify-state"></span></summary>
+        <label class="field" for="savings-input"><span>Your investment savings (money you've set aside to invest)</span>
+          <span class="money">£<input id="savings-input" type="number" inputmode="decimal" min="0" step="100" placeholder="23000">
+            <button class="btn" id="savings-save" type="button" style="margin:0">Save</button></span></label>
+        <div class="sub" id="savings-note" style="margin-top:4px">Saved on this phone only — never sent anywhere.</div>
+        <div class="sub" id="notify-help" style="margin-top:12px"></div>
         <button class="btn" id="notify-btn" type="button" hidden>Turn on notifications</button>
         <div id="notify-out" hidden>
           <div class="sub" style="margin:8px 0 6px">Only needed if notifications stop: copy this and send it to Claude
