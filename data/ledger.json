@@ -1,1 +1,12 @@
-{"sealed": 1, "iv": "g7zBruB8BqpFo4OO", "ct": "S0Olp/SznQb4NB1N3NCmz335YKJinNsAtp1WCgykzUrjPSIrWa7DG8R5+uzp/HHgFlt/tG3M7OhXncro+6sPaOeP+8H/mXPOnhbyxh6LtFHevS0aqmy1CtZM5w6tcc5YCxbB/TvmLQuIKqS/8Q203KmidG4z/6PCMoIjXeplRXnwy72H6tkRCjlA5eSIsmpyAPU/C5l04qERmU7iVbfjeE78yk51ezsSHcT92njqKNzauApEQHT87HiBqIWs+v5DngBeN8tDaju6mVnVX+XddLxG52Smzm1FHENKH0NtFONs5WqMm9FUdeF3Pvb8/LOWkpUT5NBo7DVwryWZrwNMf7xplikDXdFvVoQO3S53"}
+[
+ {
+  "date": "2026-09-28",
+  "ticker": "AMD",
+  "name": "AMD",
+  "reason": "Fell 3.6% in a day, mostly with its sector. Still healthy (profit margin 16%).",
+  "price": 607.87,
+  "core_price": 146.12,
+  "return_pct": -0.0,
+  "core_return_pct": -0.0
+ }
+]
