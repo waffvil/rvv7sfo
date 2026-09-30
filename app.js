@@ -67,7 +67,8 @@ function renderPicks(d) {
     const parts = [[worth, "worth a look"], [count("watch"), "to watch"], [count("avoid"), "to avoid"]]
       .filter(([k]) => k).map(([k, t]) => `${k} ${t}`);
     $("picks-count").hidden = false;
-    $("picks-count").textContent = `${parts.join(" · ")} · checked ${p.checked} stocks`;
+    const funnel = p.researched != null ? ` · ${p.dipped} dipped · best ${p.researched} researched` : "";
+    $("picks-count").textContent = `${parts.join(" · ")} · checked ${p.checked} stocks${funnel}`;
   }
   if (!n) {
     empty.textContent = `Checked ${p.checked} stocks — none has dipped enough to look at. Your core index plan is the default.`;
@@ -238,6 +239,9 @@ function investForm(it) {
     line("→ Pot for individual picks, 20%", gbp(r.picksPot)),
     line("→ Most in any one stock (5%)", gbp(r.perStock)),
     line(`${it.ticker} now`, gbp(r.amount), true),
+    ...(r.answer === "yes" ? [el("p", { class: "sub", style: "margin-top:6px", text:
+      `The ${gbp(r.picksPot)} picks pot is shared: if several stocks say YES, pick the one or two you've researched ` +
+      `best — not ${gbp(r.amount)} in each.` })] : []),
     el("button", { class: "btn", type: "button", style: "margin-top:10px", text: "Change my savings", onclick: goToSavings }),
     el("p", { class: "sub", style: "margin-top:10px", text:
       "J.P. Morgan Personal Investing can't buy single shares like this — you'd need a DIY Stocks & Shares ISA " +
